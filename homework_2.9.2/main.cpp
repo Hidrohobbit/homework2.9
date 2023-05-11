@@ -10,15 +10,15 @@ public:
 	{
 		Fraction temp;
 
-		if(this->denominator_ == other.denominator_)
+		if(this->denominator_ == other.denominator_) //Проверка на схожесть знаменателей двух дробей необходима для корректной работы оператора " + " и " - ".
 		{
 			temp.numerator_ = this->numerator_ + other.numerator_;
-			temp.denominator_ = this->denominator_;
+			temp.denominator_ = this->denominator_; //При равенстве знаменателей нам необходимо лишь суммировать или вычесть числитель 
 			return temp;
 		}
-		else
+		else //В случае неравенства знаменателей нам необходимо привести дроби к общему знаментаелю посредством перемножения первой дроби на знаменатель второй дроби и умножения второй дроби на знаменатель певрой дроби
 		{
-			temp.numerator_ = (this->numerator_ * other.denominator_) + (this->denominator_ * other.numerator_);
+			temp.numerator_ = (this->numerator_ * other.denominator_) + (this->denominator_ * other.numerator_); 
 			temp.denominator_ = this->denominator_ * other.denominator_;
 			return temp;
 		}
@@ -101,7 +101,7 @@ std::ostream& operator << (std::ostream& out, const Fraction& fraction)
 int main()
 {
 	Fraction f1(3, 4);
-	Fraction f2(4, 5);
+	Fraction f2(4, 4);
 	Fraction f3(7, 4);
 	Fraction f_result;
 	
